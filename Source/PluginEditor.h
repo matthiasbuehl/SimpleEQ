@@ -14,6 +14,15 @@
 //==============================================================================
 /**
 */
+
+struct CustomRotarySlider : juce::Slider {
+    CustomRotarySlider() : juce::Slider(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag,
+                                        juce::Slider::TextEntryBoxPosition::NoTextBox)
+    {
+        
+    }
+};
+
 class SimpleEQAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
@@ -28,6 +37,20 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     SimpleEQAudioProcessor& audioProcessor;
+    
+    CustomRotarySlider
+    peakFreqSlider,
+    peakGainSlider,
+    peakQualitySlider,
+    lowCutFreqSlider,
+    highCutFreqSlider,
+    lowCutSlopeSlider,
+    highCutSlopeSlider;
+    
+    std::vector<CustomRotarySlider*> getComps();
+    
+    
+    
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleEQAudioProcessorEditor)
 };
